@@ -28,6 +28,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /*查询所有*/
     @PostMapping("findByPage")
     public JSONObject findByPage(@RequestBody Map<String, Object> map) {
         JSONObject jb = userService.findByPage(map);
