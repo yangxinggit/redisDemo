@@ -13,7 +13,7 @@ spring:
 
 #  datasource:
 #    druid:
-#      url: jdbc:mysql://47.98.214.64:3306/random?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+#      url: jdbc:mysql://127.0.0.1:3306/random?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
 #      driverClassName: com.mysql.cj.jdbc.Driver
 #      username: root
 #      password: 123456
@@ -33,7 +33,7 @@ spring:
 #      poolPreparedStatements: true
 #      maxPoolPreparedStatementPerConnectionSize: 20
 #      loginUsername: admin
-#      loginPassword: owinfodruid
+#      loginPassword:
 #      allow:
 #      deny:
 
