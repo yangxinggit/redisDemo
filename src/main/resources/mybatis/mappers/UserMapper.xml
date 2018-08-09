@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hachuizi.service.dao.IUserDao">
+
+    <sql id="userTable"> user_info </sql>
+
+    <resultMap id="BaseResult" type="com.hachuizi.service.entity.UserEntity">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="user_tel" property="userTel"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <select id="findByPage" parameterType="java.util.Map" resultMap="BaseResult">
+        SELECT id,user_name,password,user_tel,create_time FROM
+        <include refid="userTable"/>
+    </select>
+
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResult">
+        SELECT id,user_name,password,user_tel,create_time FROM
+        <include refid="userTable"/>
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.hachuizi.service.entity.UserEntity">
+        INSERT INTO
+        <include refid="userTable"/>
+        (id,user_name,password,user_tel,create_time) VALUES
+        (#{id},#{userName},#{password},#{userTel},#{createTime})
+    </insert>
+
+    <update id="update" parameterType="com.hachuizi.service.entity.UserEntity">
+        UPDATE
+        <include refid="userTable"/>
+        SET password = #{password}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        DELETE FROM
+        <include refid="userTable"/>
+        WHERE id = #{id}
+    </delete>
+</mapper>

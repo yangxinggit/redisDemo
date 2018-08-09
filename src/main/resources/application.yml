@@ -1,0 +1,78 @@
+server:
+  port: 1026
+
+spring:
+  application:
+    name: owinfo-lnkSign-customs
+
+  datasource:
+    url: jdbc:mysql://47.98.214.64:3306/random?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+#  datasource:
+#    druid:
+#      url: jdbc:mysql://47.98.214.64:3306/random?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#      username: root
+#      password: 123456
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      filters: stat,wall,log4j
+#      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+#      maxActive: 10
+#      initialSize: 1
+#      maxWait: 120000
+#      minIdle: 1
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      validationQuery: select 'x'
+#      testWhileIdle: true
+#      testOnBorrow: true
+#      testOnReturn: true
+#      poolPreparedStatements: true
+#      maxPoolPreparedStatementPerConnectionSize: 20
+#      loginUsername: admin
+#      loginPassword: owinfodruid
+#      allow:
+#      deny:
+
+  jackson:
+    dateFormat: yyyy-MM-dd HH:mm:ss
+    jodaDateTimeFormat: yyyy-MM-dd HH:mm:ss
+    timeZone: GMT+8
+
+  redis:
+    database: 0
+    host: 192.168.0.118
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 8 # 连接池中的最大空闲连接
+        min-idle: 0 # 连接池中的最小空闲连接
+        max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+    timeout: 1000
+
+logging.level.com.hachuizi: DEBUG
+endpoints.health.sensitive: false
+management.security.enabled: false
+
+
+mybatis:
+  configuration:
+    cacheEnabled: true
+    lazyLoadingEnabled: true
+    multipleResultSetsEnabled: true
+    useColumnLabel: true
+    useGeneratedKeys: false
+    defaultExecutorType: SIMPLE
+    defaultStatementTimeout: 100
+    safeRowBoundsEnabled: false
+    mapUnderscoreToCamelCase: false
+    localCacheScope: SESSION
+    jdbcTypeForNull: OTHER
+    lazyLoadTriggerMethods: equals,clone,hashCode,toString
+  mapperLocations: classpath:mybatis/mappers/*.xml
+  typeAliasesPackage: com.hachuizi.service.entity
